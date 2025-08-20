@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aim Trainer — Mouse Target Clicker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrapper">
+    <header class="topbar">
+      <h1>Aim Trainer</h1>
+      <div class="controls">
+        <label>
+          Difficulty
+          <select id="difficulty" aria-label="Select difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+            <option value="insane">Insane</option>
+          </select>
+        </label>
+
+        <button id="startBtn" class="primary">Start</button>
+        <button id="pauseBtn" class="ghost" disabled>Pause</button>
+
+        <label class="toggle">
+          <input id="muteToggle" type="checkbox" />
+          <span>Mute</span>
+        </label>
+      </div>
+    </header>
+
+    <section class="hud">
+      <div><strong>Score:</strong> <span id="score">0</span></div>
+      <div><strong>Hits:</strong> <span id="hits">0</span></div>
+      <div><strong>Shots:</strong> <span id="shots">0</span></div>
+      <div><strong>Accuracy:</strong> <span id="accuracy">0%</span></div>
+      <div><strong>Escaped:</strong> <span id="escaped">0</span></div>
+      <div><strong>Combo:</strong> <span id="combo">0x</span></div>
+      <div><strong>Time:</strong> <span id="time">45.0</span>s</div>
+      <div><strong>Best:</strong> <span id="best">0</span></div>
+    </section>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="gameCanvas" aria-label="Aim trainer playfield" role="img"></canvas>
+      <div class="overlay" id="overlay" aria-live="polite" aria-atomic="true">
+        <div class="card">
+          <h2>Ready?</h2>
+          <p>Click the circles as fast and as accurately as you can before the timer runs out.</p>
+          <ul class="list">
+            <li>Left click to score. Missing breaks your combo.</li>
+            <li>Targets shrink with difficulty. Smaller = more points.</li>
+            <li>Escaped targets don’t affect accuracy but will hurt your final score.</li>
+            <li>Press <kbd>Space</kbd> or the Pause button to pause/resume.</li>
+          </ul>
+          <button id="overlayStart" class="primary">Play</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>
+        Built with vanilla HTML5 Canvas. Drop this into a Django template or static page.
+      </p>
+    </footer>
+
+    <!-- Screen reader announcements -->
+    <div class="sr-only" aria-live="polite" id="ariaLive"></div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
